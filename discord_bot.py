@@ -13,10 +13,11 @@ skarr = Bot(command_prefix="!")
 async def on_message(message):
     await skarr.process_commands(message)
     mention = f'<@!{skarr.user.id}>'
+    mention_mobile = f'<@{skarr.user.id}>'
 
     quote = db.get_random_quote()
 
-    if mention in message.content:
+    if mention | mention_mobile in message.content:
         await message.channel.send(quote[1])
 
 @skarr.command()
