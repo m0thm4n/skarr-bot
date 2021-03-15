@@ -17,7 +17,9 @@ async def on_message(message):
 
     quote = db.get_random_quote()
 
-    if mention | mention_mobile in message.content:
+    if mention in message.content:
+        await message.channel.send(quote[1])
+    if mention_mobile in message.content:
         await message.channel.send(quote[1])
 
 @skarr.command()
